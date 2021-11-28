@@ -12,13 +12,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Install and Build
-      run: |
-        yarn ci
-        yarn build
-
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@4.1.7
-      with:
-        branch: gh-pages
-        folder: build
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.CLIFE_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build
+        BUILD_SCRIPT: npm install && npm run build
