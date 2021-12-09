@@ -12,7 +12,10 @@ export default function CallAppButton({ text, callOption, ...resetBtnProps }: Pr
     <Button
       {...resetBtnProps}
       onClick={() => {
-        const lib = new CallApp(initialOption);
+        const lib = new CallApp({
+          fallback: window.location.href,
+          ...initialOption
+        });
         lib.open({
           path
         });
