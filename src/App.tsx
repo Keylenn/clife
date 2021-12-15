@@ -128,7 +128,7 @@ function App() {
         btnsOption={[
           {
             path:
-              "https://www.yuque.com/docs/share/88c67654-44b6-46f2-853c-6e01490e556f",
+              "https://keylenn.yuque.com/docs/share/70c19e12-c1c3-4a0d-abc0-3f7df7b93bd7",
             text: "🖼️ Knowledge"
           },
           {
