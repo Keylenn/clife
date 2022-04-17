@@ -8,6 +8,31 @@ import Progress from "./components/Progress";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 
+const fieldChargeAreaBtnsOption =  [
+  {
+    path: "https://mo.fish/",
+    text: "🐟 鱼塘"
+  },
+  {
+    type: "native",
+    text: "⚖️ 罗翔说刑法",
+    protocol: "bilibili",
+    path: "space/517327498"
+  },
+  {
+    type: "native",
+    text: "🧐 司马南",
+    protocol: "snssdk1128",
+    path: "user/profile/95125186957"
+  },
+  {
+    type: "native",
+    text: "📚 微信读书",
+    protocol: "anywhere",
+    path: "open?sid=5565"
+  },
+]
+
 function App() {
   const { activeStep, ...operations } = useStep();
   const planArea = {
@@ -17,7 +42,7 @@ function App() {
         btnsOption={[
           {
             type: "native",
-            text: "✍️ plan",
+            text: "✍️ 计划",
             protocol: "ticktick"
           }
         ]}
@@ -29,66 +54,7 @@ function App() {
     label: "领域充电区",
     content: (
       <ContentWithStepOption
-        btnsOption={[
-          {
-            path: "https://mo.fish/",
-            text: "🐟 fish"
-          },
-          {
-            type: "native",
-            protocol: "weixin",
-            path: "dl/business/?t=0SHRUFWuePm",
-            text: "📰 news"
-          },
-          {
-            type: "native",
-            text: "🤏 Network",
-            protocol: "anywhere",
-            path: "open?sid=0900"
-          },
-          {
-            type: "native",
-            text: "⚖️ law",
-            protocol: "bilibili",
-            path: "space/517327498"
-          },
-          {
-            type: "native",
-            text: "🧐 literature",
-            protocol: "snssdk1128",
-            path: "user/profile/95125186957"
-          },
-          {
-            type: "native",
-            text: "🐻 parenting",
-            protocol: "snssdk1128",
-            path: "user/profile/3337763956471383"
-          },
-          {
-            type: "native",
-            text: "😃 life",
-            protocol: "bilibili",
-            path: "space/699492406"
-          },
-          {
-            type: "native",
-            text: "🤗 psychology",
-            protocol: " bilibili",
-            path: "video/9781864"
-          },
-          {
-            type: "native",
-            text: "📚 read",
-            protocol: "anywhere",
-            path: "open?sid=4151"
-          },
-          {
-            type: "native",
-            text: "📜 literature",
-            protocol: "bilibili",
-            path: "space/532741557"
-          }
-        ]}
+        btnsOption={[...fieldChargeAreaBtnsOption]}
         stepProps={operations}
       />
     )
@@ -100,22 +66,15 @@ function App() {
         btnsOption={[
           {
             type: "native",
-            text: "😂 fun",
-            protocol: "snssdk1128"
-          },
-          {
-            type: "native",
-            text: "✨ bilibili",
+            text: "✨ B站",
             protocol: "bilibili",
             path: "home"
           },
           {
             type: "native",
-            text: "🎮 game",
-            protocol: "anywhere",
-            path: "open?sid=7041"
-          }
-          // TODO 抖音电影推荐/剪辑
+            text: "😂 抖音",
+            protocol: "snssdk1128"
+          },
         ]}
         stepProps={operations}
       />
@@ -127,13 +86,14 @@ function App() {
       <ContentWithStepOption
         btnsOption={[
           {
-            path:
-              "https://keylenn.yuque.com/docs/share/70c19e12-c1c3-4a0d-abc0-3f7df7b93bd7",
-            text: "🖼️ Knowledge"
+            type: "native",
+            text: "🖼️ 语雀",
+            protocol: "anywhere",
+            path: "open?sid=8475"
           },
           {
             type: "native",
-            text: "📘 rare earth nuggets",
+            text: "📘 掘金",
             protocol: "anywhere",
             path: "open?sid=5091"
           },
@@ -145,7 +105,7 @@ function App() {
           },
           {
             type: "native",
-            text: "💪 Baidu Netdisk",
+            text: "💪 百度网盘",
             protocol: "anywhere",
             path: "open?sid=7959"
           }
@@ -159,10 +119,9 @@ function App() {
     content: (
       <ContentWithStepOption
         btnsOption={[
-          // TODO 切换到歌单tab
           {
             type: "native",
-            text: "🎼 mindfulness",
+            text: "🎼 冥想放松",
             protocol: "qqmusic",
             path: "ui/myTab"
           }
@@ -178,16 +137,10 @@ function App() {
         btnsOption={[
           {
             type: "native",
-            text: "💰 fund",
+            text: "💰 基金",
             protocol: "alipays",
             path: "platformapi/startapp?appId=20000793"
           },
-          {
-            type: "native",
-            text: "💳 Fixed investment",
-            protocol: "anywhere",
-            path: "open?sid=3131"
-          }
         ]}
         stepProps={operations}
       />
@@ -200,7 +153,7 @@ function App() {
         btnsOption={[
           {
             type: "native",
-            text: "🤸 reduce fat",
+            text: "🤸 瘦身",
             protocol: " snssdk1128",
             path: "aweme/detail/7031529192739081475"
           }
@@ -216,11 +169,20 @@ function App() {
         btnsOption={[
           {
             type: "native",
-            text: "🧐  Introspection",
+            text: "🧐 自省",
             protocol: "ticktick"
           }
         ]}
         stepProps={operations}
+      />
+    )
+  };
+  const lastFieldChargeArea = {
+    label: "领域充电区",
+    content: (
+      <ContentWithStepOption
+        btnsOption={[...fieldChargeAreaBtnsOption]}
+        stepProps={{ ...operations, disabledNext: true }}
       />
     )
   };
@@ -237,7 +199,7 @@ function App() {
     sportArea,
     fieldChargeArea,
     introspectionArea,
-    fieldChargeArea
+    lastFieldChargeArea
   ].map((step) => ({ ...step, key: uuidv4() }));
   const percent = (activeStep + 1) / steps.length;
   return (
@@ -260,24 +222,36 @@ function Tools() {
   const tools = [
     {
       type: "native",
-      text: "✍️ add",
+      text: "H❤F",
+      protocol: "anywhere",
+      path: "open?sid=3584"
+    },
+    {
+      type: "native",
+      text: "✍️ 滴答清单",
       protocol: "ticktick"
     },
     {
       type: "native",
-      text: "🍅 focus",
-      protocol: "weixin",
-      path: "dl/business/?t=JaOekhEPkMk"
+      text: "⚖️ B站收藏",
+      protocol: "bilibili",
+      path: "main/favorite"
     },
     {
       type: "native",
-      text: "🎼  Music",
+      text: "🤏 脉脉",
+      protocol: "anywhere",
+      path: "open?sid=0900"
+    },
+    {
+      type: "native",
+      text: "🎼  QQ音乐",
       protocol: "qqmusic",
       path: "ui/myTab"
     },
     {
       type: "native",
-      text: "🥤 drink",
+      text: "🥤 喝水时间",
       protocol: "anywhere",
       path: "open?sid=9456"
     },
@@ -287,18 +261,21 @@ function Tools() {
       protocol: "anywhere",
       path: "open?sid=1894"
     },
+
     {
       type: "native",
-      text: "📝 memo",
+      text: "📝 备忘录",
       protocol: "anywhere",
       path: "open?sid=7205"
-    },
+    }, 
     {
       type: "native",
-      text: "📱 apps",
+      text: "📱 应用管理",
       protocol: "anywhere",
-      path: "open?sid=5225"
-    }
+      path: "open?sid=5667"
+    },
+
+
   ];
   return <>{tools.map((opt, idx) => <BtnWithType key={idx} {...opt} />)}</>
 }
