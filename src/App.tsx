@@ -1,3 +1,4 @@
+import {FC} from 'react'
 import Button from "./components/Button";
 import CallAppButton from "./components/CallAppButton";
 import useStep from "./hooks/useStep";
@@ -5,48 +6,37 @@ import Stepper from "./components/Stepper";
 import StepOption from "./components/StepOption";
 import Box from "@mui/material/Box";
 import Progress from "./components/Progress";
+import Accordion from "./components/Accordion"
 import { v4 as uuidv4 } from "uuid";
+import img0 from './assets/0.jpg'
 import "./App.css";
-
-const fieldChargeAreaBtnsOption =  [
-  {
-    path: "https://mo.fish/",
-    text: "🐟 鱼塘"
-  },
-  {
-    type: "native",
-    text: "⚖️ 罗翔说刑法",
-    protocol: "bilibili",
-    path: "space/517327498"
-  },
-  {
-    type: "native",
-    text: "🧐 司马南",
-    protocol: "snssdk1128",
-    path: "user/profile/95125186957"
-  },
-  {
-    type: "native",
-    text: "📚 微信读书",
-    protocol: "anywhere",
-    path: "open?sid=5565"
-  },
-]
+import {btnsOption,tools, commonImgStyle} from './constanst'
 
 function App() {
   const { activeStep, ...operations } = useStep();
+  const healArea = {
+    label: "健康区",
+    content: (
+      <ContentWithStepOption
+        btnsOption={[
+          btnsOption.drink,
+          btnsOption.heart,
+        ]}
+        stepProps={{ ...operations, disabledBack: true }}
+      />
+    )
+  };
   const planArea = {
     label: "规划区",
     content: (
       <ContentWithStepOption
-        btnsOption={[
-          {
-            type: "native",
-            text: "✍️ 计划",
-            protocol: "ticktick"
-          }
-        ]}
-        stepProps={{ ...operations, disabledBack: true }}
+        extraContent={
+          <Accordion summary={<BtnWithType {...btnsOption.plan}  />}>
+            <p>实时检查清单🗒️，分清主次</p>
+            <p>合理利用🍅番茄时间、⏲️碎片化时间等</p>
+          </Accordion>
+        }
+        stepProps={operations}
       />
     )
   };
@@ -54,7 +44,33 @@ function App() {
     label: "领域充电区",
     content: (
       <ContentWithStepOption
-        btnsOption={[...fieldChargeAreaBtnsOption]}
+        extraContent={
+          <section>
+            <Accordion defaultExpanded summary={'📰 朝览天下事'}>
+              <Btns btnsOption={[btnsOption.news, btnsOption.fish]} />
+            </Accordion>
+            <Accordion summary={<BtnWithType {...btnsOption.zy} />}>
+              <Btns btnsOption={[btnsOption.zjdc, btnsOption.hdnj]} />
+              <img src={img0} alt="" style={{...commonImgStyle, marginTop: '1em'}} />
+            </Accordion>
+            <Accordion summary={<BtnWithType {...btnsOption.history} />}>
+              <Btns btnsOption={[btnsOption.szbf, btnsOption.bxzgs]} />
+            </Accordion>
+            <Accordion summary={<BtnWithType {...btnsOption.pm} />}>
+              <Btns btnsOption={[btnsOption.fmjz, btnsOption.xdl]} />
+            </Accordion>
+            <Accordion defaultExpanded summary={'🖌️ 书法之美'}>
+              <Btns btnsOption={[btnsOption.hkjcbh]} />
+            </Accordion>
+            <Accordion defaultExpanded summary={'🛋️ 阅读之美'}>
+              <Btns btnsOption={[btnsOption.whyRead, btnsOption.wxds]} />
+            </Accordion>
+            <Accordion defaultExpanded summary={'💰 投资之美'}>
+              <Btns btnsOption={[btnsOption.charles, btnsOption.wxds]} />
+            </Accordion>
+          </section>
+        
+        }
         stepProps={operations}
       />
     )
@@ -63,52 +79,22 @@ function App() {
     label: "娱乐区",
     content: (
       <ContentWithStepOption
-        btnsOption={[
-          {
-            type: "native",
-            text: "✨ B站",
-            protocol: "bilibili",
-            path: "home"
-          },
-          {
-            type: "native",
-            text: "😂 抖音",
-            protocol: "snssdk1128"
-          },
-        ]}
+        btnsOption={[btnsOption.bilibili, btnsOption.tt, btnsOption.mp]}
         stepProps={operations}
       />
     )
   };
   const workChargeArea = {
-    label: "工作充电区",
+    // @TODO
+    label: "专业充电区",
     content: (
       <ContentWithStepOption
         btnsOption={[
-          {
-            type: "native",
-            text: "🖼️ 语雀",
-            protocol: "anywhere",
-            path: "open?sid=8475"
-          },
-          {
-            type: "native",
-            text: "📘 掘金",
-            protocol: "anywhere",
-            path: "open?sid=5091"
-          },
-          {
-            type: "native",
-            text: "🌱 leedcoe",
-            protocol: "anywhere",
-            path: "open?sid=9152"
-          },
-          {
-            type: "native",
-            text: "💪 百度网盘",
-            protocol: "anywhere",
-            path: "open?sid=7959"
-          }
+          btnsOption.txwd,
+          btnsOption.yq, 
+          btnsOption.jj, 
+          btnsOption.leedcode, 
+          btnsOption.bdwp
         ]}
         stepProps={operations}
       />
@@ -119,12 +105,8 @@ function App() {
     content: (
       <ContentWithStepOption
         btnsOption={[
-          {
-            type: "native",
-            text: "🎼 冥想放松",
-            protocol: "qqmusic",
-            path: "ui/myTab"
-          }
+          btnsOption.mx,
+          btnsOption.wyth,
         ]}
         stepProps={operations}
       />
@@ -135,12 +117,8 @@ function App() {
     content: (
       <ContentWithStepOption
         btnsOption={[
-          {
-            type: "native",
-            text: "💰 基金",
-            protocol: "alipays",
-            path: "platformapi/startapp?appId=20000793"
-          },
+          btnsOption.fund,
+          btnsOption.pazq
         ]}
         stepProps={operations}
       />
@@ -151,12 +129,8 @@ function App() {
     content: (
       <ContentWithStepOption
         btnsOption={[
-          {
-            type: "native",
-            text: "🤸 瘦身",
-            protocol: " snssdk1128",
-            path: "aweme/detail/7031529192739081475"
-          }
+          btnsOption.jz,
+          btnsOption.fj
         ]}
         stepProps={operations}
       />
@@ -166,13 +140,11 @@ function App() {
     label: "自省区",
     content: (
       <ContentWithStepOption
-        btnsOption={[
-          {
-            type: "native",
-            text: "🧐 自省",
-            protocol: "ticktick"
-          }
-        ]}
+        extraContent={
+        <Accordion defaultExpanded summary={'🧐 自省'}>
+          <Btns btnsOption={[btnsOption.ddqd, btnsOption.sk]} />
+        </Accordion>
+      }
         stepProps={operations}
       />
     )
@@ -181,12 +153,39 @@ function App() {
     label: "领域充电区",
     content: (
       <ContentWithStepOption
-        btnsOption={[...fieldChargeAreaBtnsOption]}
+        extraContent={
+          <section>
+            <Accordion defaultExpanded summary={'📰 朝览天下事'}>
+              <Btns btnsOption={[btnsOption.news, btnsOption.fish]} />
+            </Accordion>
+            <Accordion summary={<BtnWithType {...btnsOption.zy} />}>
+              <Btns btnsOption={[btnsOption.zjdc, btnsOption.hdnj]} />
+              <img src={img0} alt="" style={{...commonImgStyle, marginTop: '1em'}} />
+            </Accordion>
+            <Accordion summary={<BtnWithType {...btnsOption.history} />}>
+              <Btns btnsOption={[btnsOption.szbf, btnsOption.bxzgs]} />
+            </Accordion>
+            <Accordion summary={<BtnWithType {...btnsOption.pm} />}>
+              <Btns btnsOption={[btnsOption.fmjz, btnsOption.xdl]} />
+            </Accordion>
+            <Accordion defaultExpanded summary={'🖌️ 书法之美'}>
+              <Btns btnsOption={[btnsOption.hkjcbh]} />
+            </Accordion>
+            <Accordion defaultExpanded summary={'🛋️ 阅读之美'}>
+              <Btns btnsOption={[btnsOption.whyRead, btnsOption.wxds]} />
+            </Accordion>
+            <Accordion defaultExpanded summary={'💰 投资之美'}>
+              <Btns btnsOption={[btnsOption.charles, btnsOption.wxds]} />
+            </Accordion>
+          </section>
+        
+        }
         stepProps={{ ...operations, disabledNext: true }}
       />
     )
   };
   const steps = [
+    healArea,
     planArea,
     fieldChargeArea,
     funArea,
@@ -219,64 +218,7 @@ function App() {
 export default App;
 
 function Tools() {
-  const tools = [
-    {
-      type: "native",
-      text: "H❤F",
-      protocol: "anywhere",
-      path: "open?sid=3584"
-    },
-    {
-      type: "native",
-      text: "✍️ 滴答清单",
-      protocol: "ticktick"
-    },
-    {
-      type: "native",
-      text: "⚖️ B站收藏",
-      protocol: "bilibili",
-      path: "main/favorite"
-    },
-    {
-      type: "native",
-      text: "🤏 脉脉",
-      protocol: "anywhere",
-      path: "open?sid=0900"
-    },
-    {
-      type: "native",
-      text: "🎼  QQ音乐",
-      protocol: "qqmusic",
-      path: "ui/myTab"
-    },
-    {
-      type: "native",
-      text: "🥤 喝水时间",
-      protocol: "anywhere",
-      path: "open?sid=9456"
-    },
-    {
-      type: "native",
-      text: "❤️ heal",
-      protocol: "anywhere",
-      path: "open?sid=1894"
-    },
 
-    {
-      type: "native",
-      text: "📝 备忘录",
-      protocol: "anywhere",
-      path: "open?sid=7205"
-    }, 
-    {
-      type: "native",
-      text: "📱 应用管理",
-      protocol: "anywhere",
-      path: "open?sid=5667"
-    },
-
-
-  ];
   return <>{tools.map((opt, idx) => <BtnWithType key={idx} {...opt} />)}</>
 }
 
@@ -308,21 +250,29 @@ function BtnWithType({ type, ...option }: any) {
   }
 }
 
-function ContentWithStepOption({ btnsOption, stepProps, extraContent }: any) {
+const Btns: FC<{btnsOption: any[]}>  = ({btnsOption}) => {
   let btnsContent = null;
 
   if (Array.isArray(btnsOption)) {
     btnsContent = btnsOption.map((opt, idx) => (
       <BtnWithType key={idx} sx={{ mt: 1, mr: 1 }} {...opt} />
-    ));
+    ))
   } else if (btnsOption && typeof btnsOption === "object") {
     btnsContent = <BtnWithType {...btnsOption} />;
   }
+  return <>{btnsContent}</>
+}
+
+function ContentWithStepOption({ btnsOption, stepProps, extraContent }: any) {
   return (
     <>
       <Box sx={{ mb: 2 }}>
-        {btnsContent}
-        {extraContent}
+        <Btns btnsOption={btnsOption} />
+        {extraContent && (
+          <section style={{marginTop: '1em'}}>
+            {extraContent}
+          </section>
+        )}
       </Box>
       <StepOption {...stepProps} />
     </>
