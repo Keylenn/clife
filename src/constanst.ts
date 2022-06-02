@@ -199,6 +199,12 @@ export const btnsOption = {
     protocol: "anywhere",
     path: "open?sid=7205"
   }, 
+  shh: {
+    type: "native",
+    text: "🧐 释慧海",
+    protocol: "snssdk1128",
+    path: "aweme/detail/7103101640156187940"
+  },
 }
 
 export const tools = [

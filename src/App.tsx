@@ -20,7 +20,7 @@ function App() {
       <ContentWithStepOption
         btnsOption={[
           btnsOption.drink,
-          btnsOption.heart,
+          btnsOption.heart
         ]}
         stepProps={{ ...operations, disabledBack: true }}
       />
@@ -142,7 +142,7 @@ function App() {
       <ContentWithStepOption
         extraContent={
         <Accordion defaultExpanded summary={'🧐 自省'}>
-          <Btns btnsOption={[btnsOption.ddqd, btnsOption.sk]} />
+          <Btns btnsOption={[btnsOption.ddqd, btnsOption.sk, btnsOption.shh]} />
         </Accordion>
       }
         stepProps={operations}
