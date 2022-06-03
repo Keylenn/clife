@@ -13,7 +13,7 @@ import "./App.css";
 import {btnsOption,tools, commonImgStyle} from './constanst'
 
 function App() {
-  const { activeStep, ...operations } = useStep();
+  const { activeStep, goto, ...operations } = useStep();
   const healArea = {
     label: "健康区",
     content: (
@@ -66,7 +66,7 @@ function App() {
               <Btns btnsOption={[btnsOption.whyRead, btnsOption.wxds]} />
             </Accordion>
             <Accordion defaultExpanded summary={'💰 投资之美'}>
-              <Btns btnsOption={[btnsOption.charles, btnsOption.wxds]} />
+              <Btns btnsOption={[btnsOption.jztz, btnsOption.wxds]} />
             </Accordion>
           </section>
         
@@ -142,7 +142,7 @@ function App() {
       <ContentWithStepOption
         extraContent={
         <Accordion defaultExpanded summary={'🧐 自省'}>
-          <Btns btnsOption={[btnsOption.ddqd, btnsOption.sk, btnsOption.shh]} />
+          <Btns btnsOption={[btnsOption.ddqd, btnsOption.sk, btnsOption.shh, btnsOption.charles, btnsOption.td]} />
         </Accordion>
       }
         stepProps={operations}
@@ -175,7 +175,7 @@ function App() {
               <Btns btnsOption={[btnsOption.whyRead, btnsOption.wxds]} />
             </Accordion>
             <Accordion defaultExpanded summary={'💰 投资之美'}>
-              <Btns btnsOption={[btnsOption.charles, btnsOption.wxds]} />
+              <Btns btnsOption={[btnsOption.jztz, btnsOption.wxds]} />
             </Accordion>
           </section>
         
@@ -205,7 +205,7 @@ function App() {
     <div className="App">
       <Progress percent={percent} />
       <Block title="Daliy" flex={5}>
-        <Stepper activeStep={activeStep} steps={steps} />
+        <Stepper activeStep={activeStep} goto={goto} steps={steps} />
       </Block>
 
       <Block title="Tools" flex={2}>

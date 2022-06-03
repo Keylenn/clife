@@ -20,7 +20,11 @@ export default function useStep({ defaultActiveStep = 0 } = {}) {
     });
   };
 
-  return { activeStep: +(activeStep as any), onNext, onBack };
+  const goto = (step: any) => {
+    setActiveStep(step);
+  };
+
+  return { activeStep: +(activeStep as any), onNext, onBack, goto };
 }
 
 function getDayExpires() {

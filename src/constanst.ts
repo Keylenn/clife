@@ -100,6 +100,12 @@ export const btnsOption = {
     protocol: "bilibili",
     path: "video/BV1BK411L7DJ"
   },
+  jztz: {
+    type: "native",
+    text: "🐢 价投",
+    protocol: "bilibili",
+    path: "search/价值投资"
+  },
   charles: {
     type: "native",
     text: "🌟 查理·芒格",
@@ -204,6 +210,12 @@ export const btnsOption = {
     text: "🧐 释慧海",
     protocol: "snssdk1128",
     path: "aweme/detail/7103101640156187940"
+  },
+  td: {
+    type: "native",
+    text: "🗝 天道",
+    protocol: "bilibili",
+    path: "video/BV1SR4y1F7ef"
   },
 }
 
