@@ -49,6 +49,9 @@ function App() {
             <Accordion defaultExpanded summary={'📰 朝览天下事'}>
               <Btns btnsOption={[btnsOption.news, btnsOption.fish]} />
             </Accordion>
+             <Accordion defaultExpanded summary={'📖 知识百科'}>
+              <Btns btnsOption={[btnsOption.zsbk]} />
+            </Accordion>
             <Accordion summary={<BtnWithType {...btnsOption.zy} />}>
               <Btns btnsOption={[btnsOption.zjdc, btnsOption.hdnj]} />
               <img src={img0} alt="" style={{...commonImgStyle, marginTop: '1em'}} />
@@ -157,6 +160,9 @@ function App() {
           <section>
             <Accordion defaultExpanded summary={'📰 朝览天下事'}>
               <Btns btnsOption={[btnsOption.news, btnsOption.fish]} />
+            </Accordion>
+             <Accordion defaultExpanded summary={'📖 知识百科'}>
+              <Btns btnsOption={[btnsOption.zsbk]} />
             </Accordion>
             <Accordion summary={<BtnWithType {...btnsOption.zy} />}>
               <Btns btnsOption={[btnsOption.zjdc, btnsOption.hdnj]} />
