@@ -185,13 +185,13 @@ export const btnsOption = {
   jz: {
     type: "native",
     text: "🤸 减脂",
-    protocol: " snssdk1128",
+    protocol: "snssdk1128",
     path: "aweme/detail/7031529192739081475"
   },
   fj: {
     type: "native",
     text: "🎽 腹肌",
-    protocol: " snssdk1128",
+    protocol: "snssdk1128",
     path: "aweme/detail/7070399297212140839"
   },
   ddqd: {
@@ -217,6 +217,19 @@ export const btnsOption = {
     protocol: "bilibili",
     path: "video/BV1SR4y1F7ef"
   },
+   mx: {
+    type: "native",
+    text: "🧘‍♂️ 冥想",
+    protocol: "bilibili",
+    path: "search/冥想"
+  },
+   zsbk: {
+    type: "native",
+    text: "📚 知识百科",
+    protocol: "bilibili",
+    path: "video/BV1XA411w7ug"
+  },
+  
 }
 
 export const tools = [
@@ -274,6 +287,7 @@ export const tools = [
     protocol: "anywhere",
     path: "open?sid=5667"
   },
+  
 ];
 
 export const commonImgStyle: CSSProperties = {
