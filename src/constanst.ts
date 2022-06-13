@@ -159,12 +159,6 @@ export const btnsOption = {
     protocol: "anywhere",
     path: "open?sid=7959"
   },
-  mx: {
-    type: "native",
-    text: "🧐 冥想",
-    protocol: "bilibili",
-    path: "search/冥想"
-  },
   wyth: {
     type: "native",
     text: "🎶 五音调和",
